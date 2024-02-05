@@ -55,34 +55,28 @@ public class InitialClass {
 
 	}
 	
-	public boolean waitForJSandJQueryToLoad() {
-
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-
-		// wait for jQuery to load
-		ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<Boolean>() {
-			@Override
-			public Boolean apply(WebDriver driver) {
-				try {
-					return ((Long) (((JavascriptExecutor) driver)).executeScript("return jQuery.active") == 0);
-				} catch (Exception e) {
-					// no jQuery present
-					return true;
-				}
-			}
-		};
-
-		// wait for Javascript to load
-		ExpectedCondition<Boolean> jsLoad = new ExpectedCondition<Boolean>() {
-			@Override
-			public Boolean apply(WebDriver driver) {
-				return (((JavascriptExecutor) driver)).executeScript("return document.readyState").toString()
-						.equals("complete");
-			}
-		};
-
-		return wait.until(jQueryLoad) && wait.until(jsLoad);
-	}
+	/*
+	 * public boolean waitForJSandJQueryToLoad() {
+	 * 
+	 * WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	 * 
+	 * // wait for jQuery to load ExpectedCondition<Boolean> jQueryLoad = new
+	 * ExpectedCondition<Boolean>() {
+	 * 
+	 * @Override public Boolean apply(WebDriver driver) { try { return ((Long)
+	 * (((JavascriptExecutor) driver)).executeScript("return jQuery.active") == 0);
+	 * } catch (Exception e) { // no jQuery present return true; } } };
+	 * 
+	 * // wait for Javascript to load ExpectedCondition<Boolean> jsLoad = new
+	 * ExpectedCondition<Boolean>() {
+	 * 
+	 * @Override public Boolean apply(WebDriver driver) { return
+	 * (((JavascriptExecutor)
+	 * driver)).executeScript("return document.readyState").toString()
+	 * .equals("complete"); } };
+	 * 
+	 * return wait.until(jQueryLoad) && wait.until(jsLoad); }
+	 */
 
 	public WebDriver launchbrowser(String browser) {
 		switch (browser) {
@@ -185,6 +179,18 @@ public class InitialClass {
 			
 		} catch (Exception e) {
 			System.out.println("Error on ClickOnElement Method under InitailClass :"+locator+"Error: "+e);
+		}
+	}
+	
+	public void scrollToWebElement(String locator)
+	{
+		try {
+			WebElement ele = createLocator(locator);
+			js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].scrollIntoView();", ele);
+			Thread.sleep(Integer.valueOf(dataString.getProperty("TWO_SECOND")));
+		} catch (Exception e) {
+			System.out.println("Error on scrollToWebElement Method under InitailClass :"+locator+"Error: "+e);
 		}
 	}
 	

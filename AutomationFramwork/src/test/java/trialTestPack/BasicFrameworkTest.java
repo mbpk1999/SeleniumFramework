@@ -9,6 +9,9 @@ public class BasicFrameworkTest extends BasicMethodForAutomation{
   public void Demoworkshop() throws NumberFormatException, InterruptedException {
 	  
 	  login();
+	  scrollToWebElement("MyAccountLink");
+	  clickOnElement("MyAccountLink");
+	  Thread.sleep(Integer.valueOf(dataString.getProperty("FIVE_SECOND")));
 	  logout();  
   }
 }

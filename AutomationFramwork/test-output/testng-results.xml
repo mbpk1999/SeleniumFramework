@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-02-04T22:40:35 IST" name="AutoFrameworkTestingSuite" finished-at="2024-02-04T22:40:48 IST" duration-ms="12449">
+  <suite started-at="2024-02-05T23:49:03 IST" name="AutoFrameworkTestingSuite" finished-at="2024-02-05T23:49:18 IST" duration-ms="15696">
     <groups>
     </groups>
-    <test started-at="2024-02-04T22:40:35 IST" name="Test" finished-at="2024-02-04T22:40:48 IST" duration-ms="12449">
+    <test started-at="2024-02-05T23:49:03 IST" name="Test" finished-at="2024-02-05T23:49:18 IST" duration-ms="15696">
       <class name="trialTestPack.BasicFrameworkTest">
-        <test-method is-config="true" signature="startBrowserURL(java.lang.String)[pri:0, instance:trialTestPack.BasicFrameworkTest@43c1b556]" started-at="2024-02-04T22:40:35 IST" name="startBrowserURL" finished-at="2024-02-04T22:40:41 IST" duration-ms="6276" status="PASS">
+        <test-method is-config="true" signature="startBrowserURL(java.lang.String)[pri:0, instance:trialTestPack.BasicFrameworkTest@7c9d8e2]" started-at="2024-02-05T23:49:03 IST" name="startBrowserURL" finished-at="2024-02-05T23:49:08 IST" duration-ms="4866" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,11 +18,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startBrowserURL -->
-        <test-method signature="Demoworkshop()[pri:0, instance:trialTestPack.BasicFrameworkTest@43c1b556]" started-at="2024-02-04T22:40:42 IST" name="Demoworkshop" finished-at="2024-02-04T22:40:48 IST" duration-ms="6073" status="PASS">
+        <test-method signature="Demoworkshop()[pri:0, instance:trialTestPack.BasicFrameworkTest@7c9d8e2]" started-at="2024-02-05T23:49:08 IST" name="Demoworkshop" finished-at="2024-02-05T23:49:18 IST" duration-ms="10795" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Demoworkshop -->
-        <test-method is-config="true" signature="endTest()[pri:0, instance:trialTestPack.BasicFrameworkTest@43c1b556]" started-at="2024-02-04T22:40:48 IST" name="endTest" finished-at="2024-02-04T22:40:48 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="endTest()[pri:0, instance:trialTestPack.BasicFrameworkTest@7c9d8e2]" started-at="2024-02-05T23:49:18 IST" name="endTest" finished-at="2024-02-05T23:49:18 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- endTest -->
