@@ -4,13 +4,18 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,6 +23,12 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -28,7 +39,10 @@ public class InitialClass {
 	public static JavascriptExecutor js;
 	public static Properties locatorString;
 	public static Properties dataString;
+	public static ExtentTest logger;
+	public static ExtentReports report;
 	String browser, username, password = "";
+	
 
 	public void initProperty() {
 		try {
@@ -96,6 +110,7 @@ public class InitialClass {
 			}
 		}
 		/* URL of tricentis DemoWork Shop */
+		driver.manage().window().maximize();
 		driver.get("https://demowebshop.tricentis.com/");
 		wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		js = (JavascriptExecutor) driver;
@@ -217,5 +232,40 @@ public class InitialClass {
 			// TODO Auto-generated catch block
 			System.out.println("Error on SendKeys_Enter Method under InitailClass :"+locator+"Error: "+e);
 		}
+	}
+	
+	public void reports() throws Exception {
+
+		ExtentSparkReporter extent = new ExtentSparkReporter(
+				new File(System.getProperty("user.dir") + "/Html Reports/extent.html"));
+		report = new ExtentReports();
+		report.attachReporter(extent);
+		extent.config().setDocumentTitle("My Automation Framework Report Testing");
+
+	}
+	
+	public static String getScreenshot(WebDriver driver) {
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		File src = ts.getScreenshotAs(OutputType.FILE);
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss-ms");
+		String path = System.getProperty("user.dir") + "/Screenshot//" + sdf.format(new Date()) + ".png";
+		File destination = new File(path);
+		try {
+			FileUtils.copyFile(src, destination);
+
+		} catch (IOException e) {
+			//logger.log(Status.FAIL, "Screen Shot Capture Failed: " + e.getMessage());
+			System.out.println("Capture Failed " + e.getMessage());
+		}
+		return path;
+	}
+	
+	public void TakeScreenShot(String status, String str) throws IOException {
+		if (status.equalsIgnoreCase("pass"))
+			logger.log(Status.PASS, str, MediaEntityBuilder.createScreenCaptureFromPath(getScreenshot(driver)).build());
+		else if (status.equalsIgnoreCase("fail"))
+			logger.log(Status.FAIL, str, MediaEntityBuilder.createScreenCaptureFromPath(getScreenshot(driver)).build());
+		else
+			logger.log(Status.INFO, str, MediaEntityBuilder.createScreenCaptureFromPath(getScreenshot(driver)).build());
 	}
 }

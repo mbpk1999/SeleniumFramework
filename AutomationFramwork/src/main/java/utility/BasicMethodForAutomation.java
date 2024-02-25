@@ -5,18 +5,29 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 
+import Utility.initialization;
+
 public class BasicMethodForAutomation extends InitialClass{
 	InitialClass init = new InitialClass();
 	
 	@Parameters({"browser"})
 	@BeforeTest
-	public void startBrowserURL(String browser)
+	public void startBrowserURL(String browser) throws Exception
 	{
 		System.out.println("Starting Browser....");
 		init.initProperty();
+		init.reports();
 		init.start(browser);
 	}
 	
+	public void StartReportReader(String mtdName) {
+		logger = InitialClass.report.createTest(mtdName);
+		logger.info(mtdName + " - Validation started");
+	}
+
+	public void EndReportReader(String mtdName) {
+		logger.info(mtdName + " - Validation Ends");
+	}
 	
 	public void login()
 	{
@@ -39,6 +50,7 @@ public class BasicMethodForAutomation extends InitialClass{
 	public void endTest()
 	{
 		System.out.println("Quiting Browser.....");
+		InitialClass.report.flush();
 		//init.stop();
 	}
 	
