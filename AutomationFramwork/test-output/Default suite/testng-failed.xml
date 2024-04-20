@@ -3,13 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="trialTestPack.BasicFrameworkTest">
+      <class name="DemoWorkShop.OrderItem">
         <methods>
+          <include name="ShoppingCart"/>
+          <include name="OrderBlueJeans"/>
           <include name="startBrowserURL"/>
           <include name="endTest"/>
-          <include name="Demoworkshop"/>
         </methods>
-      </class> <!-- trialTestPack.BasicFrameworkTest -->
+      </class> <!-- DemoWorkShop.OrderItem -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

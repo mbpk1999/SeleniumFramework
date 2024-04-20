@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-02-25T23:20:37 IST" name="AutoFrameworkTestingSuite" finished-at="2024-02-25T23:20:55 IST" duration-ms="18579">
+  <suite started-at="2024-04-07T14:47:01 IST" name="Suite" finished-at="2024-04-07T14:47:37 IST" duration-ms="35650">
     <groups>
     </groups>
-    <test started-at="2024-02-25T23:20:37 IST" name="Test" finished-at="2024-02-25T23:20:55 IST" duration-ms="18579">
-      <class name="trialTestPack.BasicFrameworkTest">
-        <test-method is-config="true" signature="startBrowserURL(java.lang.String)[pri:0, instance:trialTestPack.BasicFrameworkTest@7c6908d7]" started-at="2024-02-25T23:20:37 IST" name="startBrowserURL" finished-at="2024-02-25T23:20:44 IST" duration-ms="7146" status="PASS">
+    <test started-at="2024-04-07T14:47:01 IST" name="OrderItem" finished-at="2024-04-07T14:47:37 IST" duration-ms="35650">
+      <class name="DemoWorkShop.OrderItem">
+        <test-method is-config="true" signature="startBrowserURL(java.lang.String)[pri:0, instance:DemoWorkShop.OrderItem@4e08711f]" started-at="2024-04-07T14:47:02 IST" name="startBrowserURL" finished-at="2024-04-07T14:47:09 IST" duration-ms="7334" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,15 +18,19 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startBrowserURL -->
-        <test-method signature="Demoworkshop()[pri:0, instance:trialTestPack.BasicFrameworkTest@7c6908d7]" started-at="2024-02-25T23:20:44 IST" name="Demoworkshop" finished-at="2024-02-25T23:20:55 IST" duration-ms="11126" status="PASS">
+        <test-method signature="OrderBlueJeans()[pri:0, instance:DemoWorkShop.OrderItem@4e08711f]" started-at="2024-04-07T14:47:09 IST" name="OrderBlueJeans" finished-at="2024-04-07T14:47:23 IST" duration-ms="14455" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Demoworkshop -->
-        <test-method is-config="true" signature="endTest()[pri:0, instance:trialTestPack.BasicFrameworkTest@7c6908d7]" started-at="2024-02-25T23:20:55 IST" name="endTest" finished-at="2024-02-25T23:20:55 IST" duration-ms="271" status="PASS">
+        </test-method> <!-- OrderBlueJeans -->
+        <test-method signature="ShoppingCart()[pri:0, instance:DemoWorkShop.OrderItem@4e08711f]" started-at="2024-04-07T14:47:23 IST" name="ShoppingCart" finished-at="2024-04-07T14:47:37 IST" duration-ms="13570" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ShoppingCart -->
+        <test-method is-config="true" signature="endTest()[pri:0, instance:DemoWorkShop.OrderItem@4e08711f]" started-at="2024-04-07T14:47:37 IST" name="endTest" finished-at="2024-04-07T14:47:37 IST" duration-ms="258" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- endTest -->
-      </class> <!-- trialTestPack.BasicFrameworkTest -->
-    </test> <!-- Test -->
-  </suite> <!-- AutoFrameworkTestingSuite -->
+      </class> <!-- DemoWorkShop.OrderItem -->
+    </test> <!-- OrderItem -->
+  </suite> <!-- Suite -->
 </testng-results>

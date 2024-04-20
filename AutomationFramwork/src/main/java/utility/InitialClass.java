@@ -22,6 +22,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -197,6 +198,23 @@ public class InitialClass {
 		}
 	}
 	
+	public String getElementText(String label) {
+		String returnVal = null;
+		try {
+			WebElement ele = createLocator(label);
+			returnVal = ele.getText();
+		} catch (Exception ex) {
+			System.out.println(ex);
+		}
+		return returnVal;
+	}
+	
+	public Boolean checkIfSelected(String label)
+	{
+		WebElement ele = createLocator(label);
+		return ele.isSelected();
+	}
+	
 	public void scrollToWebElement(String locator)
 	{
 		try {
@@ -209,6 +227,37 @@ public class InitialClass {
 		}
 	}
 	
+	public void selectbyDropDown(String locator, String text) throws InterruptedException {
+		try {
+			WebElement ele = createLocator(locator);
+			Select sel = new Select(ele);
+			sel.selectByVisibleText(text);
+		} catch (Exception ex) {
+			System.out.println(ex);
+		}
+	}
+	
+	public void selectbyDropDownValue(String label, String text) throws InterruptedException {
+		try {
+			WebElement ele = createLocator(label);
+			Select sel = new Select(ele);
+			sel.selectByValue(text);
+		} catch (Exception ex) {
+			System.out.println(ex);
+		}
+	}
+	
+	public String getInputTextFieldValue(String label) {
+		String returnVal = null;
+		try {
+			WebElement ele = createLocator(label);
+			returnVal = ele.getAttribute("value");
+		} catch (Exception ex) {
+			System.out.println(ex);
+		}
+		return returnVal;
+	}
+		
 	public void sendKeys(String locator, String text)
 	{
 		try {
@@ -220,6 +269,7 @@ public class InitialClass {
 			System.out.println("Error on SendKeys Method under InitailClass :"+locator+"Error: "+e);
 		}	
 	}
+	
 	
 	public void sendKeys_Enter(String locator, String text)
 	{
@@ -241,7 +291,6 @@ public class InitialClass {
 		report = new ExtentReports();
 		report.attachReporter(extent);
 		extent.config().setDocumentTitle("My Automation Framework Report Testing");
-
 	}
 	
 	public static String getScreenshot(WebDriver driver) {
